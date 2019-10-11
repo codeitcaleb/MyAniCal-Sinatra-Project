@@ -6,3 +6,5 @@ end
 
 use SessionsController
 run ApplicationController
+use UsersController
+use AnimesController

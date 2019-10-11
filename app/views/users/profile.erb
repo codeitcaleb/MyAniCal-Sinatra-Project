@@ -1,3 +1,6 @@
 "Welcome, <%=@user.name%>!"
 
+<% Anime.all.each do |anime|%>
+    <li>@anime.title</li>
+
 <a href="/sessions/logout">Log Out</a>

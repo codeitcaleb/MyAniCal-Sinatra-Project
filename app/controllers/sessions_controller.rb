@@ -4,11 +4,14 @@ class SessionsController < ApplicationController
     end
 
     post '/registrations' do
-        @user = User.find_by(email: params[:email], password: params[:password])
-        @user.save
-        sessions[:user_id] = @user.id 
-
-        redirect '/users/home'
+      
+        if User.find_by(email: params[:email])
+           redirect to '/login'
+        else
+            @user = User.create(name: params[:name], email: params["email"], password: params["password"])
+            session[:user_id] = @user.id 
+            redirect to '/users/index'
+        end
     end
 
     get '/login' do
@@ -16,9 +19,18 @@ class SessionsController < ApplicationController
     end
 
     post '/sessions' do
-        @user = User.find_by(email: params[:email], password: params[:password])
+        @user = User.find_by(email: params[:email])
 
-    end
-
+        if @user && @user.authenticate(params[:password])
+        session[:user_id] = @user.id
+        redirect '/users/home'
+        end
+        redirect '/sessions/login'
+  end
+  
+  get '/sessions/logout' do
+       session.clear
+       redirect '/'
+  end
 
 end
