@@ -1,6 +1,11 @@
-"Welcome, <%=@user.name%>!"
+<h1>"Welcome, <%= @user.name%>!"</h1>
 
 <% Anime.all.each do |anime|%>
-    <li>@anime.title</li>
-
-<a href="/sessions/logout">Log Out</a>
+<form action="" method="POST">
+    <li><input type="checkbox" value="choice">
+     <%= anime.title %>
+     </li>
+     <input type="submit" value="submit">
+</form>
+<% end %>
+<a href="/logout">Log Out</a>

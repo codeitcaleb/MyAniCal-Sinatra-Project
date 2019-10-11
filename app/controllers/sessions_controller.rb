@@ -1,36 +1,40 @@
 class SessionsController < ApplicationController
-    get '/signup' do 
-        erb :'registrations/signup'
-    end
 
-    post '/registrations' do
+  get '/signup' do
+     erb :signup
+  end
+
+  post '/signup' do
       
-        if User.find_by(email: params[:email])
-           redirect to '/login'
-        else
-            @user = User.create(name: params[:name], email: params["email"], password: params["password"])
-            session[:user_id] = @user.id 
-            redirect to '/users/index'
-        end
+    if User.find_by(email: params[:email])
+       redirect to '/index'
+    else
+       @user = User.create(name: params[:name], email: params["email"], password: params["password"])
+        session[:user_id] = @user.id 
+        redirect to '/anime/index'
     end
+  end
 
-    get '/login' do
-        erb :'sessions/login'
+  get '/login' do
+    erb :login
+  end
+
+  post '/login' do
+
+    @user = User.find_by(email: params[:email])
+
+    if @user && @user.authenticate(params[:password])
+       session[:user_id] = @user.id
+       redirect '/users/profile'
+    else
+     
+        redirect '/login'
     end
-
-    post '/sessions' do
-        @user = User.find_by(email: params[:email])
-
-        if @user && @user.authenticate(params[:password])
-        session[:user_id] = @user.id
-        redirect '/users/home'
-        end
-        redirect '/sessions/login'
   end
   
-  get '/sessions/logout' do
-       session.clear
-       redirect '/'
+  get '/logout' do
+    session.clear
+    redirect '/'
   end
 
 end

@@ -10,19 +10,17 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :'registrations/signup'
+    erb :home
   end
 
   helpers do
 
     def current_user
-        @user = User.find(session[:user_id]) 
+        User.find_by_id(session[:user_id]) 
     end
 
     def is_logged_in?
         !!session[:user_id]
     end
-
   end
-
 end

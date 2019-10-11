@@ -3,6 +3,6 @@ class User < ActiveRecord::Base
     has_many :anime, through: :calendar
     
     validates :name, presence: true
-    validate :email, uniqueness: true
+    validates :email, uniqueness: true
     has_secure_password
 end
