@@ -1,11 +1,15 @@
-<h1>"Welcome, <%= @user.name%>!"</h1>
+ <h1>"Welcome, <%= current_user.name%>!"</h1>
 
-<% Anime.all.each do |anime|%>
-<form action="" method="POST">
-    <li><input type="checkbox" value="choice">
-     <%= anime.title %>
-     </li>
-     <input type="submit" value="submit">
-</form>
-<% end %>
+<%days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]%>
+
+    <%days.each do |day|%>
+    <h3><%=day.capitalize %> </h3>
+    <% current_user.animes.where(day: day).each do |anime|%>
+     <li>
+         <%= anime.title %>
+      </li>
+   <%end%>
+ <%end%>
+
 <a href="/logout">Log Out</a>
+

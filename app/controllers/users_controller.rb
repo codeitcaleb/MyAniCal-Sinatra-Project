@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
 
-  get '/users/profile' do
+  get '/users/edit' do
     @user = current_user
-    erb :'/users/profile'
+    erb :'/users/edit'
+  end
+
+  get '/profile' do
+    erb :'users/profile'
   end
 
 end

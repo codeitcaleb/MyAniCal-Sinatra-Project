@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     else
        @user = User.create(name: params[:name], email: params["email"], password: params["password"])
         session[:user_id] = @user.id 
-        redirect to '/anime/index'
+        redirect to '/animes/edit'
     end
   end
 
@@ -25,9 +25,8 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
        session[:user_id] = @user.id
-       redirect '/users/profile'
+       redirect '/animes/edit'
     else
-     
         redirect '/login'
     end
   end
