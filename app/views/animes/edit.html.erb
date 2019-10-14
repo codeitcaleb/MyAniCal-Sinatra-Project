@@ -3,9 +3,9 @@
 <%days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]%>
 
  <form action="/animes" method="POST">
- <input type="hidden" name="_method" value="PATCH">
+ <input id="hidden" type="hidden" name="_method" value="patch">
     <%days.each do |day|%>
-    <h3><%=day.capitalize %> </h3>
+    <h3><%=day.capitalize %></h3>
     <% Anime.where(day: day).each do |anime|%>
      <li>
     <input type="checkbox" name="choice[]" value="<%=anime.id %>" <%= 'checked' if current_user.animes.include?(anime) %>>

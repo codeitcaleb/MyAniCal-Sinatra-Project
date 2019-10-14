@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
        session[:user_id] = @user.id
-       redirect '/animes/edit'
+       redirect '/profile'
     else
         redirect '/login'
     end

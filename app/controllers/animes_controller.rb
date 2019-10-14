@@ -1,8 +1,9 @@
 class AnimeController < ApplicationController
 
     post '/animes' do
+       
         params["choice"].each do |anime_id|
-            anime = Anime.find_by(anime_id.to_i)
+            anime = Anime.find_by(id: anime_id.to_i)
             current_user.animes << anime if !current_user.animes.include?(anime)
             current_user.save
         end
@@ -16,9 +17,11 @@ class AnimeController < ApplicationController
     end
 
     patch '/animes' do
+       
+        current_user.animes.destroy_all
         params["choice"].each do |anime_id|
-            anime = Anime.find_by(anime_id.to_i)
-            current_user.animes << anime if !current_user.animes.include?(anime)
+            anime = Anime.find_by(id: anime_id.to_i)
+            current_user.animes << anime 
             current_user.save
         end
          #binding.pry
