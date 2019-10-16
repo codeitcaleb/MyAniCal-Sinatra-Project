@@ -11,13 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191010201813) do
+ActiveRecord::Schema.define(version: 20191014191553) do
 
   create_table "animes", force: :cascade do |t|
     t.string "title"
     t.string "synopsis"
     t.string "day"
     t.string "image_url"
+  end
+
+  create_table "user_anime_reviews", force: :cascade do |t|
+    t.text    "review"
+    t.integer "user_id"
+    t.integer "anime_id"
   end
 
   create_table "user_schedules", force: :cascade do |t|

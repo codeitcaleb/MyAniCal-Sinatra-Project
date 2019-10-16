@@ -1,0 +1,22 @@
+<h1><%= @anime.title %></h1>
+
+<img src="<%=@anime.image_url%>">
+
+<h4>Day:</h4>
+<p><%= @anime.day.capitalize %></p>
+
+<h4>Synopsis:</h4>
+<p><%= @anime.synopsis %></p>
+
+
+<!-- GET '/reviews/new' form that POST route '/reviews' create instance UserAnimeReview erb :'/reviews/new.html' -->
+<h4>Reviews</h4>
+<% @anime.user_anime_reviews. each do |review| %>
+    <p><%= review.review %> -<%=review.user.name %></p>
+<% end %>
+
+<a href="/reviews/new">Write a Review</a>
+<br>
+<a href="/profile">Home</a>
+<br>
+<a href="/logout">Log Out</a>

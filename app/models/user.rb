@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
     has_many :user_schedules
+    has_many :user_anime_reviews
     has_many :animes, through: :user_schedules
     
     validates :name, presence: true

@@ -6,12 +6,14 @@
     <h3><%=day.capitalize %> </h3>
     <% current_user.animes.where(day: day).each do |anime|%>
      <li>
-         <%= anime.title %>
+        <a href="/animes/<%=anime.id%>"><%= anime.title %></a>
       </li>
    <%end%>
  <%end%>
 
-<a href="/animes/edit">My Anime</a>
+<a href="/animes/edit">Edit Anime </a>
+<br>
+<a href="/reviews">My Reviews</a>
 <br>
 <a href="/logout">Log Out</a>
 

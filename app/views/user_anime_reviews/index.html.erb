@@ -1,0 +1,9 @@
+<h1>Reviews</h1>
+
+<% current_user.user_anime_reviews. each do |review| %>
+    <h4><%= review.anime.title %></h4>
+    <img src="<%= review.anime.image_url%>">
+    <p><%= review.review %></p>
+    <a href="/reviews/<%= review.id%>/edit">Edit</a>
+    <a href="/reviews/<%= review.id%>">Delete </a>
+<% end %>

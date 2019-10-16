@@ -28,4 +28,11 @@ class AnimeController < ApplicationController
        redirect to '/profile'
     end
 
+    get '/animes/:id' do
+        @anime = Anime.find_by_id(params[:id])
+        erb :'/animes/show.html'
+    end
+
+    
+  
 end

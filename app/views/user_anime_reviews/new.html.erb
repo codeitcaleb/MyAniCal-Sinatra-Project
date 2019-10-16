@@ -1,0 +1,16 @@
+<h1>Review Your Anime</h1>
+
+<!-- select a show from your list, write that review, and submit -->
+<form action="/reviews" method="POST">
+    <label for name="anime">Anime</label>
+    <select name="anime">
+        <% current_user.animes.each do |anime| %>
+            <option value="<%= anime.id %>"><%= anime.title %></option>
+        <% end %>
+    </select>
+    <br>
+    <label for name="review">Review</label>
+    <textarea  name="review" rows="3"></textarea>
+    <br>
+    <input type="submit">
+</form>
