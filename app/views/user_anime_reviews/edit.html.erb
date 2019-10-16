@@ -1,8 +1,8 @@
 <h3><%=@review.anime.title%></h3>
 <img src="<%=@review.anime.image_url%>">
 
-<form action="/reviews" method="POST">
-    <input type="hidden" name="_method" value="patch">
+<form action="/reviews/<%=@review.id%>" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="patch">
     <label for name="review">Edit Review</label>
     <br>
     <textarea  name="review" rows="3"></textarea>

@@ -31,15 +31,16 @@ class UserAnimeReviewsController < ApplicationController
     end
 
     patch '/reviews/:id' do 
-        @review = UserAnimeReview.find_by_id(params)
-        @review.review = params["review"]
-        @review.save
-        redirect to "/reviews/#{@review.id}"
+        # binding.pry
+        review = UserAnimeReview.find_by_id(params[:id])
+        review.review = params["review"]
+        review.save
+        redirect to "/reviews/#{review.id}"
     end
 
     delete '/reviews/:id/delete' do
         review = UserAnimeReview.find_by_id(params[:id])
         review.delete
-        redirect '/reviews/'
+        redirect '/reviews'
     end
 end

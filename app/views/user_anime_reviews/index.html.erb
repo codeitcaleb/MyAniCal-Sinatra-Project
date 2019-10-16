@@ -5,5 +5,11 @@
     <img src="<%= review.anime.image_url%>">
     <p><%= review.review %></p>
     <a href="/reviews/<%= review.id%>/edit">Edit</a>
-    <a href="/reviews/<%= review.id%>">Delete </a>
+
+<form action="/reviews/<%= review.id %>/delete" method="post">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete">
+</form>
 <% end %>
+
+<a href="/profile">Home</a>
