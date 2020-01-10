@@ -5,7 +5,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
-
+#write a blog post about mathod override, forms, and http requests
 run ApplicationController
 use UserAnimeReviewsController
 use SessionsController

@@ -33,6 +33,10 @@ class AnimeController < ApplicationController
         erb :'/animes/show.html'
     end
 
-    
+    #create a custom route that ,when visited, takes a user to a random anime 
+    get '/random' do
+        @anime = Anime.all.sample
+        redirect to "/animes/#{@anime.id}"
+    end
   
 end

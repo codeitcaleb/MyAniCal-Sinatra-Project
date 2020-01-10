@@ -31,7 +31,6 @@ class UserAnimeReviewsController < ApplicationController
     end
 
     patch '/reviews/:id' do 
-        # binding.pry
         review = UserAnimeReview.find_by_id(params[:id])
         review.review = params["review"]
         review.save
