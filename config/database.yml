@@ -8,8 +8,11 @@ development:
 production: 
   adapter: postgresql
   encoding: unicode
-  url: <%= ENV['DATABASE_URI'] %>
-  pool: 5
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  port: <%= ENV['DB_PORT'] %>
+  database: <%= ENV['DATABASE'] %>
   timeout: 5000
 
 test:
